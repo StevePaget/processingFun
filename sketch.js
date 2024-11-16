@@ -44,7 +44,11 @@ function drawCircles() {
   for (let i = numHands; i >= 0; i--) {
     strokeWeight((outsideBorder - centreCircle)/numHands/4);
     stroke(circleColour);
-    fill(20,20,30);
+    if (i==0){
+      fill(circleColour);  
+    } else {
+      fill(20,20,30);
+    }
     circle(centrex, centrey, centreCircle + sizegap * i);
     noStroke();
     fill(200);
