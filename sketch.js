@@ -3,7 +3,7 @@ let centreCircle = 120;
 let outsideBorder = 900;
 let backColour = 255;
 let baseAngle = 0;
-let numHands = 17;
+let numHands = 18;
 let centrex = 500;
 let centrey = 500;
 let sizegap = (outsideBorder - centreCircle) / numHands;
@@ -13,7 +13,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   centrex = windowWidth/2;
   centrey = windowHeight/2;
-  outsideBorder = min(windowWidth, windowHeight)-100;
+  outsideBorder = min(windowWidth, windowHeight)-50;
   centreCircle = outsideBorder/6;
   sizegap = (outsideBorder - centreCircle) / numHands;
   frameRate(30);
@@ -23,7 +23,7 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   centrex = windowWidth/2;
   centrey = windowHeight/2;
-  outsideBorder = min(windowWidth, windowHeight)-100;
+  outsideBorder = min(windowWidth, windowHeight)-50;
   centreCircle = outsideBorder/6;
   sizegap = (outsideBorder - centreCircle) / numHands;
 }
@@ -37,8 +37,10 @@ function drawCircles() {
     circle(centrex, centrey, centreCircle + sizegap * i);
     stroke(0);
     fill(0);
-    strokeWeight(0);
+    noStroke();
     textAlign(CENTER);
+    textFont("Consolas");
+    textSize(15);
     text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
   }
 }
