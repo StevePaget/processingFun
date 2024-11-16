@@ -29,12 +29,17 @@ function windowResized() {
 }
 
 function drawCircles() {
-  fill(backColour);
-  strokeWeight(10);
-  stroke(circleColour);
   let sizegap = (outsideBorder - centreCircle) / numHands;
   for (let i = numHands; i >= 0; i--) {
+    strokeWeight(10);
+    stroke(circleColour);
+    fill(backColour);
     circle(centrex, centrey, centreCircle + sizegap * i);
+    stroke(0);
+    fill(0);
+    strokeWeight(0);
+    textAlign(CENTER);
+    text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
   }
 }
 
