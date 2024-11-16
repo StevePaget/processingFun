@@ -42,7 +42,7 @@ function windowResized() {
 function drawCircles() {
   let sizegap = (outsideBorder - centreCircle) / numHands;
   for (let i = numHands; i >= 0; i--) {
-    strokeWeight(10);
+    strokeWeight((outsideBorder - centreCircle)/numHands/4);
     stroke(circleColour);
     fill(20,20,30);
     circle(centrex, centrey, centreCircle + sizegap * i);
@@ -51,7 +51,7 @@ function drawCircles() {
     noStroke();
     textAlign(CENTER);
     textFont("Consolas");
-    textSize(15);
+    textSize(outsideBorder/60);
     text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
   }
 }
@@ -106,25 +106,25 @@ function draw() {
   } else {
     handWeight = 5;
     handHue = 244;
-    contrast = 2;
+    contrast = 3;
   }
   drawHands(diff);
-  textSize(24);
-  text("❔", 50, windowHeight-50 );
+  textSize(windowHeight*0.03);
+  text("❔", windowWidth*0.04, windowHeight*0.95);
   if (helpShow) {
       fill(255);
-      rect(100,windowHeight-100,550,90);
+      rect(windowWidth*0.07,windowHeight*0.9,windowWidth/2,windowHeight*0.08);
       noStroke();
-      textSize(20);
+      textSize(outsideBorder/50);
       fill(0);
-      text("Adapted from an idea by Christian Lawson-Perfect.",110,windowHeight-60);
-      if (isMouseInsideText("https://somethingorotherwhatever.com/",110,windowHeight-40)){
+      text("Adapted from an idea by Christian Lawson-Perfect.",windowWidth*0.08,windowHeight*0.93);
+      if (isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.08,windowHeight*0.96)){
         cursor(HAND);
         fill(0, 200, 255);
       } else {
         cursor(ARROW);
         fill(244,255,100);
       }
-      text("https://somethingorotherwhatever.com/",110,windowHeight-40);
+      text("https://somethingorotherwhatever.com/",windowWidth*0.08,windowHeight*0.96);
   }
 }
