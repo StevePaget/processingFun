@@ -27,7 +27,7 @@ function setup() {
   outsideBorder = min(windowWidth, windowHeight)-50;
   centreCircle = outsideBorder/6;
   sizegap = (outsideBorder - centreCircle) / numHands;
-  frameRate(30);
+  frameRate(60);
 }
 
 function windowResized() {
