@@ -13,6 +13,9 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   centrex = windowWidth/2;
   centrey = windowHeight/2;
+  outsideBorder = min(windowWidth, windowHeight)-100;
+  centreCircle = outsideBorder/6;
+  sizegap = (outsideBorder - centreCircle) / numHands;
   frameRate(30);
 }
 
