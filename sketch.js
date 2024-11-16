@@ -11,10 +11,6 @@ let sizegap = (outsideBorder - centreCircle) / numHands;
 let qmark;
 let helpShow = false;
 
-function preload() {
-  qmark = loadImage('/question.png');
-}
-
 function isMouseInsideText(message, messageX, messageY) {
   const messageWidth = textWidth(message);
   const messageTop = messageY - textAscent();
