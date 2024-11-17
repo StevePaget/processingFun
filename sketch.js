@@ -85,7 +85,7 @@ function drawHands(diff) {
 }
 
 function mouseClicked(){
-  if (20 <= mouseX && mouseX <= 90 && mouseY > windowHeight-80 && mouseY<windowHeight-30) {
+  if (windowWidth*0.01 <= mouseX && mouseX <= windowWidth*0.04 && mouseY > windowHeight*0.90 && mouseY<windowHeight*0.99) {
     helpShow = !helpShow;
   }
   if (helpShow && isMouseInsideText("https://somethingorotherwhatever.com/",110,windowHeight-40)){
