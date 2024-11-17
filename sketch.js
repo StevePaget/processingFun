@@ -88,7 +88,7 @@ function mouseClicked(){
   if (windowWidth*0.01 <= mouseX && mouseX <= windowWidth*0.04 && mouseY > windowHeight*0.90 && mouseY<windowHeight*0.99) {
     helpShow = !helpShow;
   }
-  if (helpShow && isMouseInsideText("https://somethingorotherwhatever.com/",110,windowHeight-40)){
+  if (helpShow && isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.09,windowHeight-40)){
     window.open('https://somethingorotherwhatever.com/', '_blank');
   }
 }
@@ -130,18 +130,18 @@ function draw() {
   text("❔", windowWidth*0.01, windowHeight*0.95);
   if (helpShow) {
       fill(255);
-      rect(windowWidth*0.07,windowHeight*0.9,windowWidth/2,windowHeight*0.08);
+      rect(windowWidth*0.08,windowHeight*0.9,windowWidth/2,windowHeight*0.08);
       noStroke();
       textSize(outsideBorder/50);
       fill(0);
-      text("Adapted from an idea by Christian Lawson-Perfect.",windowWidth*0.08,windowHeight*0.93);
-      if (isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.08,windowHeight*0.96)){
+      text("Adapted from an idea by Christian Lawson-Perfect.",windowWidth*0.09,windowHeight*0.93);
+      if (isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.09,windowHeight*0.96)){
         cursor(HAND);
         fill(0, 200, 255);
       } else {
         cursor(ARROW);
         fill(244,255,100);
       }
-      text("https://somethingorotherwhatever.com/",windowWidth*0.08,windowHeight*0.96);
+      text("https://somethingorotherwhatever.com/",windowWidth*0.09,windowHeight*0.96);
   }
 }
