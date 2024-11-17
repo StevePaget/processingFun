@@ -11,6 +11,7 @@ let sizegap = (outsideBorder - centreCircle) / numHands;
 let qmark;
 let helpShow = false;
 let contrast = 2;
+let yline;
 
 function isMouseInsideText(message, messageX, messageY) {
   const messageWidth = textWidth(message);
@@ -41,23 +42,25 @@ function windowResized() {
 
 function drawCircles() {
   let sizegap = (outsideBorder - centreCircle) / numHands;
-  for (let i = numHands; i >= 0; i--) {
+  for (let i = numHands; i >= -1; i--) {
     strokeWeight((outsideBorder - centreCircle)/numHands/4);
     stroke(circleColour);
-    if (i==0){
+    if (i==-1){
       fill(circleColour);  
     } else {
       fill(20,20,30);
     }
     circle(centrex, centrey, centreCircle + sizegap * i);
-    noStroke();
-    fill(200);
-    noStroke();
-    textAlign(CENTER);
-    textFont("Consolas");
-    textSize(outsideBorder/60);
-    text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
+    if (i>=0){
+      fill(200);
+      noStroke();
+      textAlign(CENTER);
+      textFont("Consolas");
+      textSize(outsideBorder/60);
+      text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
+    }
   }
+  
 }
 
 function drawHands(diff) {
@@ -71,7 +74,11 @@ function drawHands(diff) {
     let vy2 = sin(angle) * l2;
     let vx2 = cos(angle) * l2;
     colorMode(HSB);
-    stroke(handHue,90, brightness);
+    if (i==yline && diff != 0){
+      stroke(255);      
+    } else {
+      stroke(handHue,90, brightness);
+    }
     brightness += contrast;
     line(centrex, centrey, centrex + vx2, centrey + vy2);
   }
@@ -112,9 +119,15 @@ function draw() {
     handHue = 244;
     contrast = 3;
   }
+  if (centrex-20 <= mouseX && centrex + 20 >= mouseX){
+    yline = numHands + 1 - floor(mouseY/(sizegap/2));
+  } else {
+    yline = -1;
+  }
+
   drawHands(diff);
   textSize(windowHeight*0.03);
-  text("❔", windowWidth*0.04, windowHeight*0.95);
+  text("❔", windowWidth*0.01, windowHeight*0.95);
   if (helpShow) {
       fill(255);
       rect(windowWidth*0.07,windowHeight*0.9,windowWidth/2,windowHeight*0.08);
