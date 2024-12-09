@@ -42,6 +42,7 @@ function windowResized() {
 
 function drawCircles() {
   let sizegap = (outsideBorder - centreCircle) / numHands;
+  yline = -1
   for (let i = numHands; i >= -1; i--) {
     strokeWeight((outsideBorder - centreCircle)/numHands/4);
     stroke(circleColour);
@@ -58,9 +59,11 @@ function drawCircles() {
       textFont("Consolas");
       textSize(outsideBorder/60);
       text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
+      if isMouseInsideText(pos(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4){
+        yline = i;
     }
   }
-  
+  return yline
 }
 
 function drawHands(diff) {
@@ -100,7 +103,7 @@ function draw() {
   origindate = new Date(now.getFullYear()+1,0,1,0,0,0);
   diff = (now.getTime() - (origindate.getTime()-16777216*40000)) / 1000;
   background(20,20,30);
-  drawCircles();
+  yline = drawCircles();
   textAlign(LEFT)
   if (timetaken<20000){
     diff = 0;
@@ -119,11 +122,7 @@ function draw() {
     handHue = 244;
     contrast = 3;
   }
-  if (centrex-20 <= mouseX && centrex + 20 >= mouseX){
-    yline = numHands + 1 - floor(mouseY/(sizegap/2));
-  } else {
-    yline = -1;
-  }
+
 
   drawHands(diff);
   textSize(windowHeight*0.03);
