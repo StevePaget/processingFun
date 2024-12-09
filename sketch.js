@@ -61,9 +61,10 @@ function drawCircles() {
       text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
       if (isMouseInsideText(pos(2,i).toString(),centrex,centrey - (centreCircle + sizegap * i)/2+4)) {
         yline = i;
+      }
     }
   }
-  return yline
+  return yline;
 }
 
 function drawHands(diff) {
