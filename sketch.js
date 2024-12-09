@@ -59,7 +59,7 @@ function drawCircles() {
       textFont("Consolas");
       textSize(outsideBorder/60);
       text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
-      if isMouseInsideText(pos(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4){
+      if (isMouseInsideText(pos(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4)) {
         yline = i;
     }
   }
