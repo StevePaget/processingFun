@@ -18,7 +18,7 @@ function isMouseInsideText(message, messageX, messageY) {
   const messageTop = messageY - textAscent();
   const messageBottom = messageY + textDescent();
 
-  return mouseX > messageX && mouseX < messageX + messageWidth &&
+  return mouseX > messageX-messageWidth/2 && mouseX < messageX + messageWidth/2 &&
     mouseY > messageTop && mouseY < messageBottom;
 }
 function setup() {
