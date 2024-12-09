@@ -101,7 +101,7 @@ function draw() {
   let now = new Date();
   let startOfyear = new Date(now.getFullYear(),0,1,0,0,0);
   let timetaken = now-startOfyear;
-  origindate = new Date(now.getFullYear()+1,0,1,0,0,0);
+  let origindate = new Date(now.getFullYear()+1,0,1,0,0,0);
   diff = (now.getTime() - (origindate.getTime()-16777216*40000)) / 1000;
   background(20,20,30);
   yline = drawCircles();
