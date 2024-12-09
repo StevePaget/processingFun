@@ -13,13 +13,17 @@ let helpShow = false;
 let contrast = 2;
 let yline;
 
-function isMouseInsideText(message, messageX, messageY) {
-  const messageWidth = textWidth(message);
+function isMouseInsideText(message, messageX, messageY, align) {
+  const messageWidth = max(textWidth(message),30);
   const messageTop = messageY - textAscent();
   const messageBottom = messageY + textDescent();
-
-  return mouseX > messageX-messageWidth/2 && mouseX < messageX + messageWidth/2 &&
-    mouseY > messageTop && mouseY < messageBottom;
+  if (align == "center"){
+    return mouseX > messageX-messageWidth/2 && mouseX < messageX + messageWidth/2 &&
+      mouseY > messageTop && mouseY < messageBottom;
+  } else {
+    return mouseX > messageX && mouseX < messageX + messageWidth &&
+      mouseY > messageTop && mouseY < messageBottom;
+  }
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -59,7 +63,7 @@ function drawCircles() {
       textFont("Consolas");
       textSize(outsideBorder/60);
       text(pow(2,i),centrex,centrey - (centreCircle + sizegap * i)/2+4);
-      if (isMouseInsideText(pow(2,i).toString(),centrex,centrey - (centreCircle + sizegap * i)/2+4)) {
+      if (isMouseInsideText(pow(2,i).toString(),centrex,centrey - (centreCircle + sizegap * i)/2+4,"center")) {
         yline = i;
       }
     }
@@ -92,7 +96,7 @@ function mouseClicked(){
   if (windowWidth*0.01 <= mouseX && mouseX <= windowWidth*0.04 && mouseY > windowHeight*0.90 && mouseY<windowHeight*0.99) {
     helpShow = !helpShow;
   }
-  if (helpShow && isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.09,windowHeight-40)){
+  if (helpShow && isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.09,windowHeight-40,"left")){
     window.open('https://somethingorotherwhatever.com/', '_blank');
   }
 }
@@ -135,7 +139,7 @@ function draw() {
       textSize(outsideBorder/50);
       fill(0);
       text("Adapted from an idea by Christian Lawson-Perfect.",windowWidth*0.09,windowHeight*0.93);
-      if (isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.09,windowHeight*0.96)){
+      if (isMouseInsideText("https://somethingorotherwhatever.com/",windowWidth*0.09,windowHeight*0.96,"left")){
         cursor(HAND);
         fill(0, 200, 255);
       } else {
