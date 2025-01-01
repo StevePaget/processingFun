@@ -10,6 +10,7 @@ let handHue = 244;
 let sizegap = (outsideBorder - centreCircle) / numHands;
 let qmark;
 let helpShow = false;
+let contrast = 2;
 
 function isMouseInsideText(message, messageX, messageY) {
   const messageWidth = textWidth(message);
@@ -67,7 +68,7 @@ function drawHands(diff) {
     let vx2 = cos(angle) * l2;
     colorMode(HSB);
     stroke(handHue,90, brightness);
-    brightness += 3;
+    brightness += contrast;
     line(centrex, centrey, centrex + vx2, centrey + vy2);
   }
 }
@@ -95,14 +96,17 @@ function draw() {
     handWeight = 5 + timetaken/500;
     handHue = (244 + timetaken/10)%255
     text("Happy New Year. Enjoy this peaceful moment",50,50);
+    contrast = 4;
   } else if (timetaken<40000) {
     handWeight = 5 + timetaken/500;
     handHue = (244 + timetaken/10)%255
     diff = 0;
     text("I'm about to reset. Hold on, there's going to be a jump.",10,50);
+    contrast = 5;
   } else {
     handWeight = 5;
     handHue = 244;
+    contrast = 2;
   }
   drawHands(diff);
   textSize(24);
