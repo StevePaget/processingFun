@@ -13,7 +13,7 @@ Smoke.prototype.move = function(){
   this.y -= 1;
 };
 Smoke.prototype.draw = function(){
-  fill(40, 40, 40, 150);
+  fill(40, 40, 40, 100);
   noStroke();
   ellipse(this.x, this.y, 10, 10);
 };
@@ -77,8 +77,8 @@ function draw() {
   // --- Draw Water ---
   fill(0, 0, 200);
   noStroke();
-  for (let bx = 0; bx < 600; bx += 10){
-    rect(bx, 310 + sin(angle + bx) * 15, 10, 400);
+  for (let bx = 0; bx < 600; bx += 2){
+    rect(bx, 310 + sin(angle + bx) * 15, 2, 400);
   }
 
   frameRate(70);
